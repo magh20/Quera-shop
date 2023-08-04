@@ -1,7 +1,7 @@
 'use client'
 import {useState} from 'react'
 
-export const Myaccount=()=>{
+ const Myaccount=()=>{
     const [editPhone,setEditPhone]=useState(false)
     const [editaddress,setEditaddress]=useState(false)
    return( <article className=" flex flex-col pt-[17px] justify-start w-full h-full items-center">
@@ -47,3 +47,4 @@ export const Myaccount=()=>{
         </article>
         )
 }
+export default Myaccount
