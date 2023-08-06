@@ -1,0 +1,8 @@
+
+
+export const Forget = () => {
+    
+    return(
+        <></>
+    );
+}
