@@ -2,7 +2,6 @@
 import Image from "next/image";
 import profile from "../../../public/assets/profile.png";
 import { useState } from "react";
-import { type } from "os";
 import SpaceDashboardSharpIcon from "@mui/icons-material/SpaceDashboardSharp";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
