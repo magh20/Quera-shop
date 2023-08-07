@@ -1,8 +1,9 @@
 
 
-export const Reset = () => {
+const Reset = () => {
     
     return(
         <></>
     );
 }
+export default Reset;

@@ -1,8 +1,9 @@
 
 
-export const Forget = () => {
+const Forget = () => {
     
     return(
         <></>
     );
 }
+export default Forget;
