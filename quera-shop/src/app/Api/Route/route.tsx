@@ -35,3 +35,29 @@ export async function postRegister(data: { email: string; password: string; user
         console.log(error);
     }
 }
+
+export async function postForget (data : { email : string}) {
+    try {
+        const response = await axios.post(`${BaseUrl}/auth/forgetpassword`, {
+
+        }, { headers: { "Content-Type": "application/json" } }
+        ).then(function (response) {
+            <Link href={'../Auth/Reset'}></Link>
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export async function postReset (data : { password : string}) {
+    try {
+        const response = await axios.post(`${BaseUrl}/auth/resetPassword/:token`, {
+
+        }, { headers: { "Content-Type": "application/json" } }
+        ).then(function (response) {
+            <Link href={'../Auth/Login'}></Link>
+        });
+    } catch (error) {
+        console.log(error);
+    }
+}

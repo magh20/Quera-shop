@@ -8,7 +8,7 @@ import { postRegister } from "@/app/Api/Route/route";
 
 
 const Register = () => {
-    const { register, handleSubmit,formState: { errors },watch,getValues} = useForm();
+    const { register, handleSubmit,formState: { errors },watch} = useForm();
 
 
 
