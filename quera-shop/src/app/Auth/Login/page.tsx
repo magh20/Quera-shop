@@ -4,13 +4,17 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import Link from "next/link";
 import { postLogin } from '@/app/Api/Route/route';
+import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
 
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const router = useRouter();
+    const dispach = useDispatch();
 
     function onSubmit(data: any) {
-        return postLogin(data);
+        return postLogin(data, router, dispach);
     }
 
     return(

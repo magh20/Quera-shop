@@ -1,14 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type tokenState = {
-  token : string,
-  refreshToken : string
+  token : string
 };
 
 const initialState = {
-  token : "",
-  refreshToken : ""
-} as tokenState;
+  token: localStorage.getItem("tokenCookie")? localStorage.getItem("tokenCookie") : "",
+} as unknown as tokenState;
 
 export const token = createSlice({
   name: "token",
@@ -17,14 +15,12 @@ export const token = createSlice({
     reset: () => initialState,
     setToken: (state, action: PayloadAction<string>) => {
       state.token = action.payload;
-    },
-    setRefreshToken: (state, action: PayloadAction<string>) => {
-      state.refreshToken = action.payload;
+      localStorage.setItem("tokenCookie",action.payload);
     },
   },
 });
 
 export const {
-  reset, setToken, setRefreshToken, 
+  reset, setToken 
 } = token.actions;
 export default token.reducer;

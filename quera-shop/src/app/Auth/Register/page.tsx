@@ -4,16 +4,18 @@ import Link from "next/link";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import AssignmentIndOutlinedIcon from '@mui/icons-material/AssignmentIndOutlined';
 import { postRegister } from "@/app/Api/Route/route";
+import { useRouter } from "next/navigation";
 
 
 const Register = () => {
-    const { register, handleSubmit,formState: { errors },watch} = useForm();
-
+    const { register, handleSubmit,formState: { errors }} = useForm();
+    const router = useRouter();
 
 
     function onSubmit(data: any) {
-        postRegister(data);
+        postRegister(data, router);
     }
     
     return(
@@ -56,27 +58,23 @@ const Register = () => {
                 </div>
                 <p className=" text-xs mb-1 font-dana text-red-700 z-50">{errors.password?.message as any}</p>
 
-                {/* password repeat */}
+                {/* national id */}
                 <div className='flex flex-row-reverse items-baseline'>
-                    <input type="password" className='bg-[#F0F0F0] rounded w-[385px] h-[50px] mb-1 focus:outline-none pl-8' placeholder="Repeat Password"
-                    {...register("passwordR", { required: { value: true, message: "وارد کردن رمز عبور الزامی است" ,},
-                    validate: (val: string) => {
-                        if (watch('password') != val) {
-                          return "رمز عبور مطابقت ندارد.";
-                        }
-                      },
-                    })}
+                    <input type="text" className='bg-[#F0F0F0] rounded w-[385px] h-[50px] mb-1 focus:outline-none pl-8' placeholder="National Id"
+                    {...register("nationalId", { required: { value: true, message: "وارد کردن کد ملی الزامی است" ,},
+                    pattern: {value: /^[0-9]+/i, message: "کد ملی فقط شامل عدد میباشد"},
+                    minLength: { value: 10, message: " کد ملی باید حداقل 10 کاراکتر باشد ", },})}
                     />
-                    <span className='-mr-7 z-20'><LockOutlinedIcon /></span>
+                    <span className='-mr-7 z-20'><AssignmentIndOutlinedIcon /></span>
                 </div>
-                <p className=" text-xs mb-1 font-dana text-red-700 z-50">{errors.passwordR?.message as any}</p>
+                <p className=" text-xs mb-1 font-dana text-red-700 z-50">{errors.nationalId?.message as any}</p>
 
                 {/* checkbox */}
-                <div className='flex flex-row-reverse justify-start w-full'>
+                <div className='flex flex-row-reverse justify-start w-full '>
                     <input type="checkbox"
                     {...register("check", { required: { value: true, message: "لطفا ابتدا قوانین و مقررات را مطالعه فرمایید", },})}
                     />
-                    <p className='text-black mr-2'>من را به خاطر بسپار</p>
+                    <p className='text-black mr-2'>قوانین و مقررات را میپذیرم</p>
                 </div>
                 <p className="text-xs mt-1 font-dana text-red-700">{errors.check?.message as any}</p>
 

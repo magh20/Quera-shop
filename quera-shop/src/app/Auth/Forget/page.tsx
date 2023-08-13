@@ -2,12 +2,14 @@
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import { useForm } from  'react-hook-form';
 import { postForget } from '@/app/Api/Route/route';
+import { useRouter } from 'next/navigation';
 
 const Forget = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const router = useRouter();
 
     const onSubmit = (data : any) => {
-        postForget(data);
+        postForget(data, router);
     }
     
     return(

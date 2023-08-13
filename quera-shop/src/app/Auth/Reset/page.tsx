@@ -2,13 +2,18 @@
 import { useForm } from "react-hook-form";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { postReset } from "@/app/Api/Route/route";
+import { useRouter } from "next/navigation";
+import { RootState } from "@/redux/store";
+import { useSelector } from "react-redux";
 
 
 const Reset = () => {
     const { register, handleSubmit,formState: { errors },watch} = useForm();
+    const router = useRouter();
+    const token = useSelector((state: RootState) => state.token.token);
 
     function onSubmit(data: any) {
-        postReset(data);
+        postReset(data, router, token);
     }
     
     
