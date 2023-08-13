@@ -45,11 +45,12 @@ export async function postRegister(data: { email: string; password: string; user
 
 export async function postForget (data : { email : string}, router : any) {
     try {
-        const response = await axios.post(`${BaseUrl}/auth/forgetpassword`, {
-
+        const response = await axios.post(`${BaseUrl}/forgetpassword`, {
+            email: data.email,
         }, { headers: { "Content-Type": "application/json" } }
         ).then(function (response) {
             router.replace("/Auth/Reset");
+            console.log(response)
         });
     } catch (error) {
         console.log(error);
@@ -58,8 +59,8 @@ export async function postForget (data : { email : string}, router : any) {
 
 export async function postReset (data : { password : string}, router : any, token : string) {
     try {
-        const response = await axios.post(`${BaseUrl}/auth/resetPassword/:${token}`, {
-
+        const response = await axios.post(`${BaseUrl}/resetPassword/:${token}`, {
+            password: data.password,
         }, { headers: { "Content-Type": "application/json" } }
         ).then(function (response) {
             router.replace("/Auth/Login");

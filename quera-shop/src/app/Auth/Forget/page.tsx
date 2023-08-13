@@ -13,7 +13,7 @@ const Forget = () => {
     }
     
     return(
-        <div className="w-[448px] h-[300px] flex flex-col items-center shadow-xl shadow-purple-300">
+        <div className="w-[448px] h-[300px] flex flex-col items-center shadow-xl shadow-purple-300 mt-16">
             <p className=" mb-10 mt-10  text-3xl">لطفا ایمیل خود را وارد کنید</p>
             <form className=" flex flex-col justify-center items-center text-[#8C51C7]" onSubmit={handleSubmit(onSubmit)}>
                 <div className='flex flex-row-reverse items-baseline'>

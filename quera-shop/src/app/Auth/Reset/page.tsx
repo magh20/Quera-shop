@@ -18,12 +18,13 @@ const Reset = () => {
     
     
     return(
-        <div className="w-[448px] h-[300px] flex flex-col items-center shadow-xl shadow-purple-300">
+        <div className="w-[448px] h-[300px] flex flex-col items-center shadow-xl shadow-purple-300 mt-16">
             <p className=" mb-10 mt-10  text-3xl">رمز عبور جدید خود را وارد کنید</p>
             <form className=" flex flex-col justify-center items-center text-[#8C51C7]" onSubmit={handleSubmit(onSubmit)}>
                 <div className='flex flex-row-reverse items-baseline'>
                     <input type="password" className='bg-[#F0F0F0] rounded w-[385px] h-[50px] mb-1 focus:outline-none pl-8' placeholder="Password"
                     {...register("password", { required: { value: true, message: "وارد کردن رمز عبور الزامی است", },
+                        pattern: {value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/, message: "رمز عبور باید شامل یک حرف کوچک و یک حرف بزرگ و یک علامت باشد"},
                         minLength: { value: 8, message: " رمز عبور باید حداقل ۸ کاراکتر باشد ", },
                     })}
                     />

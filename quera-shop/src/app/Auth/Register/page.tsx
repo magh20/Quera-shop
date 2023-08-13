@@ -27,7 +27,7 @@ const Register = () => {
                     <input type="text" className='bg-[#F0F0F0] rounded w-[385px] h-[50px] mb-1 focus:outline-none pl-8' placeholder="Username"
                     {...register("username", { required: {value: true, message: "وارد کردن نام کاربری الزامی است", },
                         pattern: {value: /^[\u0621-\u0628\u062A-\u063A\u0641-\u0642\u0644-\u0648\u064E-\u0651\u0655\u067E\u0686\u0698\u0020\u2000-\u200F\u2028-\u202F\u06A9\u06AF\u06BE\u06CC\u0629\u0643\u0649-\u064B\u064D\u06D5\sa-zA-Z]+$/,
-                            message: "نام کاربری وارد شده صحیح نمی باشد",
+                        message: "نام کاربری وارد شده صحیح نمی باشد",
                         },
                     })}
                     />
