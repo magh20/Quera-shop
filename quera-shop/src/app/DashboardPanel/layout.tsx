@@ -7,17 +7,21 @@ import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import Link from "next/link";
+import { usePathname } from 'next/navigation'
+import path from "path";
 
 type Dashprops = {
   name: string;
   children : React.ReactNode
 };
  const Dashboard = ({ name ,children}: Dashprops) => {
-  const [showcourses, setShow] = useState(false);
+  const pathname=usePathname()
+  const [showcourses, setShow] = useState(()=>pathname =='/DashboardPanel/mycourses' ? true:false );
+ 
   return (
     <article
       dir="rtl"
-      className=" text-[26px] flex gap-5 flex-row items-center justify-center w-screen h-screen"
+      className=" text-[26px]  flex gap-5 flex-row items-center justify-center w-full h-full"
     >
       <section className=" h-[722px] flex flex-col gap-[58px]  text-white justify-start pt-[25px] items-center  w-[363px] shadow-lg rounded-lg bg-gradient-to-br from-[#8C51C7] to-[#876CD5]">
         <div className="flex gap-[40px] flex-col justify-center items-center">
