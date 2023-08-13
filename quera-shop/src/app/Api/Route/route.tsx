@@ -2,32 +2,39 @@ import axios from 'axios';
 import Link from 'next/link';
 import { toast } from "react-toastify";
 
-const BaseUrl = "http://localhost:3000/api";
+const BaseUrl = "http://localhost:5000/api";
+let token;
 
-export async function postLogin(data: { email: any; password: any; }) {
+export async function postLogin(data: { email: string; password: string; }) {
     try {
-        const response = await axios.post(`${BaseUrl}/api/auth/login`, {
+        const response = await axios.post(`${BaseUrl}/auth/login`, {
             email: data.email,
             password: data.password
-        }, { headers: { "Content-Type": "application/json" } }
+        }, { headers: { "Content-Type": "application/json" }, }
         );
         console.log(response);
         <Link href={'/'}></Link>
     } catch (error) {
         toast.error("ایمیل یا رمز عبور اشتباه می باشد");
+        console.log(error);
     }
 }
 
 export async function postRegister(data: { email: string; password: string; username: string; }) {
     try {
         const response = await axios.post(`${BaseUrl}/auth/register`, {
+            fullName: data.username,
             email: data.email,
             password: data.password,
-            fullName: data.username,
+            phoneNumber: "09222222222",
+            birthDate: "1357/01/26",
+            nationalId:"6745556256",
+            profile: "image.png"
             
         }, { headers: { "Content-Type": "application/json" } }
         )
         .then(function (response) {
+            token = response.data.token;
             <Link href={'../Auth/Login'}></Link>
         });
         console.log(response)
