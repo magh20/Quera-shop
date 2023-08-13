@@ -6,6 +6,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 
  const Maindash = () => {
   return (
+    // Main page of Dashboard
     <article className=" flex flex-col pt-[17px] justify-start w-full h-full items-center">
       <p className=" text-5xl text-[#616161] mb-[69px]">داشبورد</p>
       <section className=" grid  gap-x-[50px] gap-y-[38px] mb-[49px] grid-cols-2 grid-rows-3">

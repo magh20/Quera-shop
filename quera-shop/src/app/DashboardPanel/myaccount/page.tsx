@@ -4,7 +4,8 @@ import {useState} from 'react'
  const Myaccount=()=>{
     const [editPhone,setEditPhone]=useState(false)
     const [editaddress,setEditaddress]=useState(false)
-   return( <article className=" flex flex-col pt-[17px] justify-start w-full h-full items-center">
+   return( 
+   <article className=" flex flex-col pt-[17px] justify-start w-full h-full items-center">
             <p className=" text-5xl mb-[69px]">حساب کاربری</p>
             <form onKeyDown={(e)=> e.key == 'Enter' &&e.preventDefault()} className="flex flex-col justify-center items-center">
              <section className=" grid  gap-x-[90px] gap-y-[38px] mb-[49px] grid-cols-2 grid-rows-3">
