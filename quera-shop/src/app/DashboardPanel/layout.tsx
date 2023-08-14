@@ -6,15 +6,19 @@ import SpaceDashboardSharpIcon from "@mui/icons-material/SpaceDashboardSharp";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Link from "next/link";
 import { usePathname } from 'next/navigation'
 import path from "path";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 type Dashprops = {
   name: string;
   children : React.ReactNode
 };
  const Dashboard = ({ name ,children}: Dashprops) => {
+  const userData=useSelector((state:RootState)=>state.token.userData)
   const pathname=usePathname()
   const [showcourses, setShow] = useState(()=>pathname =='/DashboardPanel/mycourses' ? true:false );
  
@@ -26,7 +30,7 @@ type Dashprops = {
       <section className=" h-[722px] flex flex-col gap-[58px]  text-white justify-start pt-[25px] items-center  w-[363px] shadow-lg rounded-lg bg-gradient-to-br from-[#8C51C7] to-[#876CD5]">
         <div className="flex gap-[40px] flex-col justify-center items-center">
           <Image src={profile} width={150} alt="profile-pic" />
-          <span>{name}</span>
+          <div className=" flex gap-1 flex-row items-center justify-center"><AccountCircleIcon className=" !text-[34px]"/><span className=" pb-1">{userData.fullName}</span></div>
         </div>
         <div className="flex flex-col gap-[20px] items-start  w-full">
           <span className="mr-[53px] gap-1 flex flex-row items-center">
