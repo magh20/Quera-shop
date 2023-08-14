@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 
 const Reset = () => {
-    const { register, handleSubmit,formState: { errors },watch} = useForm();
+    const { register, handleSubmit,formState: { errors }} = useForm();
     const router = useRouter();
     const token = useSelector((state: RootState) => state.token.token);
 
