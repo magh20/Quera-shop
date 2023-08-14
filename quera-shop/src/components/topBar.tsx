@@ -6,8 +6,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 import Link from "next/link";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 export const Topbar=()=>{
+const token=useSelector((state:RootState)=> state.token.token)
 return (
     <nav dir="rtl" className=" px-[110px] py-[30px] bg-white w-full justify-between top-0 flex  flex-row">
 
@@ -26,7 +29,21 @@ return (
         <section className=" flex flex-row items-center gap-[25px] flex-grow-0">
             {/* Login and search buttons */}
                 <div className="  w-[47px] h-[43px] cursor-pointer  rounded bg-white  flex justify-center items-center shadow-[0_0_20px_1px_rgba(0,0,0,0.2)]"><SearchIcon className=" scale-x-[-1] !text-[35px] text-[#8C51C7]"/></div>
-                <Link href={'/Auth/Login'} ><button className=" bg-[#8C51C7] h-[43px] rounded px-[8px] shadow-[0_0_20px_1px_rgba(0,0,0,0.2)]  flex flex-row items-center text-white"><PersonOutlineOutlinedIcon/><p>ورود و ثبت نام</p></button></Link>
+                {token ? <Link href={'/DashboardPanel/maindash'} >
+                    <button className=" bg-[#8C51C7] h-[43px] rounded px-[8px] shadow-[0_0_20px_1px_rgba(0,0,0,0.2)]  flex flex-row items-center text-white">
+                        <PersonOutlineOutlinedIcon/>
+                        <p>
+                        حساب کاربری
+                        </p>
+                        </button>
+                        </Link>:<Link href={'/Auth/Login'} >
+                    <button className=" bg-[#8C51C7] h-[43px] rounded px-[8px] shadow-[0_0_20px_1px_rgba(0,0,0,0.2)]  flex flex-row items-center text-white">
+                        <PersonOutlineOutlinedIcon/>
+                        <p>
+                            ورود و ثبت نام
+                        </p>
+                        </button>
+                        </Link>}
             </section>
     </nav>
 )
