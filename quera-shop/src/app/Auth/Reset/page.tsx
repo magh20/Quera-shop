@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 
 const Reset = () => {
-    const { register, handleSubmit,formState: { errors },watch} = useForm();
+    const { register, handleSubmit,formState: { errors }} = useForm();
     const router = useRouter();
     const token = useSelector((state: RootState) => state.token.token);
 
@@ -24,7 +24,7 @@ const Reset = () => {
                 <div className='flex flex-row-reverse items-baseline'>
                     <input type="password" className='bg-[#F0F0F0] rounded w-[385px] h-[50px] mb-1 focus:outline-none pl-8' placeholder="Password"
                     {...register("password", { required: { value: true, message: "وارد کردن رمز عبور الزامی است", },
-                        pattern: {value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$/, message: "رمز عبور باید شامل یک حرف کوچک و یک حرف بزرگ و یک علامت باشد"},
+                        pattern: {value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, message: "رمز عبور باید شامل یک حرف کوچک و یک حرف بزرگ و یک علامت باشد"},
                         minLength: { value: 8, message: " رمز عبور باید حداقل ۸ کاراکتر باشد ", },
                     })}
                     />

@@ -7,7 +7,7 @@ type tokenState = {
 
 const initialState = {
   token: localStorage.getItem("tokenCookie")? localStorage.getItem("tokenCookie") : "",
-  userData:localStorage.userdata ? JSON.parse(localStorage.userdata):{}
+  userData: localStorage.userdata ? JSON.parse(localStorage.userdata) : {}
 } as unknown as tokenState;
 
 export const token = createSlice({
@@ -27,6 +27,6 @@ export const token = createSlice({
 });
 
 export const {
-  reset, setToken 
+  reset, setToken, setUserData
 } = token.actions;
 export default token.reducer;

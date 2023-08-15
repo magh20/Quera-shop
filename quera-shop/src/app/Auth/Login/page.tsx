@@ -6,12 +6,13 @@ import Link from "next/link";
 import { postLogin } from '@/app/Api/Route/route';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/redux/store';
 
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const router = useRouter();
-    const dispach = useDispatch();
+    const dispach = useDispatch<AppDispatch>();
 
     function onSubmit(data: any) {
         return postLogin(data, router, dispach);
@@ -22,7 +23,7 @@ const Login = () => {
             <p className=" mb-14 mt-6 text-6xl">ورود</p>
             <form className=" flex flex-col justify-center items-center text-[#8C51C7]" onSubmit={handleSubmit(onSubmit)}>
                 <div className='flex flex-row-reverse items-baseline'>
-                    <input type="email" className='bg-[#F0F0F0] rounded w-[385px] h-[50px] focus:outline-none pl-8' placeholder="Email"
+                    <input type="text" className='bg-[#F0F0F0] rounded w-[385px] h-[50px] focus:outline-none pl-8' placeholder="Email"
                     {...register("email", {
                         required: { value: true, message: "وارد کردن ایمیل الزامی است" },
                         pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: "ایمیل وارد شده صحیح نمی باشد" }

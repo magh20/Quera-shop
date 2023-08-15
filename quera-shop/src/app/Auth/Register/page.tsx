@@ -63,7 +63,9 @@ const Register = () => {
                     <input type="text" className='bg-[#F0F0F0] rounded w-[385px] h-[50px] mb-1 focus:outline-none pl-8' placeholder="National Id"
                     {...register("nationalId", { required: { value: true, message: "وارد کردن کد ملی الزامی است" ,},
                     pattern: {value: /^[0-9]+/i, message: "کد ملی فقط شامل عدد میباشد"},
-                    minLength: { value: 10, message: " کد ملی باید حداقل 10 کاراکتر باشد ", },})}
+                    minLength: { value: 10, message: " کد ملی باید حداقل 10 کاراکتر باشد ", },
+                    maxLength: { value: 10, message: "کد ملی باید حداکثر 10 کاراکتر باشد"}
+                })}
                     />
                     <span className='-mr-7 z-20'><AssignmentIndOutlinedIcon /></span>
                 </div>

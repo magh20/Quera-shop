@@ -1,6 +1,5 @@
-import { setToken } from '@/redux/features/action';
+import { setToken, setUserData } from '@/redux/features/action';
 import axios from 'axios';
-import Link from 'next/link';
 
 const BaseUrl = "http://localhost:5000/api";
 
@@ -13,6 +12,7 @@ export async function postLogin(data: { email: string; password: string; }, rout
         )
         .then(function(response){
             dispach(setToken(response.data.result.jwtToken));
+            dispach(setUserData(response.data.result.studentModel));
             router.replace("/");
             console.log(response);
         })
@@ -59,7 +59,7 @@ export async function postForget (data : { email : string}, router : any) {
 
 export async function postReset (data : { password : string}, router : any, token : string) {
     try {
-        const response = await axios.post(`${BaseUrl}/resetPassword/:${token}`, {
+        const response = await axios.post(`${BaseUrl}/resetPassword/:${token.toString()}`, {
             password: data.password,
         }, { headers: { "Content-Type": "application/json" } }
         ).then(function (response) {
