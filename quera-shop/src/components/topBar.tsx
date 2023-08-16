@@ -32,14 +32,14 @@ return (
             {/* Login and search buttons */}
                 <div className="  w-[47px] h-[43px] cursor-pointer  rounded bg-white  flex justify-center items-center shadow-[0_0_20px_1px_rgba(0,0,0,0.2)]"><SearchIcon className=" scale-x-[-1] !text-[35px] text-[#8C51C7]"/></div>
                 {token ? <Link href={'/DashboardPanel/maindash'} >
-                    <button className=" bg-[#8C51C7] h-[43px] rounded px-[8px] shadow-[0_0_20px_1px_rgba(0,0,0,0.2)]  flex flex-row items-center text-white">
+                    <button className=" bg-[#8C51C7] h-[43px] rounded px-[8px]  shadow-[0_0_8px_1px_#8C51C7]   flex flex-row items-center text-white">
                         <PersonOutlineOutlinedIcon/>
                         <p>
                         حساب کاربری
                         </p>
                         </button>
                         </Link>:<Link href={'/Auth/Login'} >
-                    <button className=" bg-[#8C51C7] h-[43px] rounded px-[8px] shadow-[0_0_20px_1px_rgba(0,0,0,0.2)]  flex flex-row items-center text-white">
+                    <button className=" bg-[#8C51C7] h-[43px] rounded px-[8px]  shadow-[0_0_8px_1px_#8C51C7]   flex flex-row items-center text-white">
                         <PersonOutlineOutlinedIcon/>
                         <p>
                             ورود و ثبت نام
