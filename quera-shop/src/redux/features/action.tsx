@@ -19,8 +19,8 @@ export const token = createSlice({
       state.token = action.payload;
       localStorage.setItem("tokenCookie",action.payload);
     },
-    setUserData:(state,action:PayloadAction<string>)=>{
-     state.token=action.payload
+    setUserData:(state,action:PayloadAction<{}>)=>{
+     state.userData=action.payload
      localStorage.userdata=JSON.stringify(action.payload)
     }
   },
