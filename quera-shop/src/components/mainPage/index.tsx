@@ -257,7 +257,7 @@ export const MainPage=()=>{
                       return (
                       <div key={item.id} className=" min-w-0 min-h-[318px] relative pb-3 bg-white flex flex-col max-w-[440px] justify-center rounded-xl shadow-[0_1px_6px_2px_rgba(0,0,0,0.2)] " > 
                            <Image src={article} alt="articlePic" className=" min-w-[441px] overflow-hidden min-h-0" width={440} height={230}/>
-                           <button className=" w-10 h-10 flex justify-center items-center absolute rounded-full shadow-[0_0px_4px_1px_#8C51C7] top-[190px] left-6  bg-[#8C51C7]"><ArrowBackIosNewIcon className=" !text-[22px] text-white"/></button>
+                           <button className=" w-10 h-10 flex justify-center items-center absolute rounded-full shadow-[0_0px_4px_1px_#8C51C7] top-[205px] left-6  bg-[#8C51C7]"><ArrowBackIosNewIcon className=" !text-[22px] text-white"/></button>
                            <div className=" flex flex-col justify-center items-center">
                            <span className=" font-semibold mt-4 mb-2">
                          {item.name}
