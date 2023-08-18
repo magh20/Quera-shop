@@ -69,3 +69,20 @@ export async function postReset (data : { password : string}, router : any, toke
         console.log(error);
     }
 }
+export async function UpdateStudent(data:{fullName:string,email:string,phone:string,birthDate:string,national:string,profile:string},id:string,token:string,dispach:any){
+    await axios.put(`${BaseUrl}/student/${id}`,{
+        fullName:data.fullName,
+        email:data.email,
+        phoneNumber:data.phone,
+        birthDate:data.birthDate,
+        nationalId:data.national,
+        profile:data.profile
+    },{headers:{ 'x-auth-token' : token}})
+    .then((response)=>{
+        
+      dispach(setUserData(response.data.result))
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
+}
