@@ -5,10 +5,16 @@ import { postReset } from "@/app/Api/Route/route";
 import { useRouter } from "next/navigation";
 import { RootState } from "@/redux/store";
 import { useSelector } from "react-redux";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 
 const Reset = () => {
-    const { register, handleSubmit,formState: { errors }} = useForm();
+    const schema = yup.object().shape({
+        password: yup.string().min(8, "رمز عبور باید حداقل 8 کاراکتر باشد").required("وارد کردن رمز عبور الزامی است")
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, "رمز عبور باید شامل یک حرف کوچک و یک حرف بزرگ و یک علامت باشد")
+    });
+    const { register, handleSubmit,formState: { errors }} = useForm({resolver: yupResolver(schema),});
     const router = useRouter();
     const token = useSelector((state: RootState) => state.token.token);
 
@@ -23,10 +29,7 @@ const Reset = () => {
             <form className=" flex flex-col justify-center items-center text-[#8C51C7]" onSubmit={handleSubmit(onSubmit)}>
                 <div className='flex flex-row-reverse items-baseline'>
                     <input type="password" className='bg-[#F0F0F0] rounded w-[385px] h-[50px] mb-1 focus:outline-none pl-8' placeholder="Password"
-                    {...register("password", { required: { value: true, message: "وارد کردن رمز عبور الزامی است", },
-                        pattern: {value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, message: "رمز عبور باید شامل یک حرف کوچک و یک حرف بزرگ و یک علامت باشد"},
-                        minLength: { value: 8, message: " رمز عبور باید حداقل ۸ کاراکتر باشد ", },
-                    })}
+                    {...register("password",)}
                     />
                     <span className='-mr-7 z-20'><LockOutlinedIcon /></span>
                 </div>
